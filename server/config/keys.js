@@ -8,5 +8,8 @@ module.exports = {
   },
   google_Maps: {
 
+  },
+  uber: {
+
   }
 };
