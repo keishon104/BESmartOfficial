@@ -20,6 +20,11 @@ app.listen(Port, () => {
   console.log("Your server is now running on Port: " + Port + "." );
 });
 
-app.get('/', (req, res) => res.sendFile(__dirname+'/client/index.html'));// connect backend to the homepage
-app.get('/checkin', (req, res) => res.sendFile(__dirname+'/client/checkin.html'));// connect backend to checkin page
-//app.get('/payment', (req, res) => res.sendFile(__dirname+'/client/payment.html'));//connect backend to payment
+// connect backend to the homepage
+app.get('/', (req, res) => res.sendFile(__dirname+'/client/index.html'));
+
+// connect backend to checkin page
+app.get('/checkin', (req, res) => res.sendFile(__dirname+'/client/checkin.html'));
+
+//connect backend to payment
+app.get('/navigate', (req, res) => res.sendFile(__dirname+'/client/navigate.html'));
