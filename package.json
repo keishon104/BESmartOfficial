@@ -1,0 +1,20 @@
+{
+  "name": "besmartofficial",
+  "version": "1.0.0",
+  "description": "Streamlines the checkin process for fliers ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keishon104/BESmartOfficial.git"
+  },
+  "author": "Keishon Smith, Daroush, Briana, Kiana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keishon104/BESmartOfficial/issues"
+  },
+  "homepage": "https://github.com/keishon104/BESmartOfficial#readme"
+}
