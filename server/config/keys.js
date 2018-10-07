@@ -7,7 +7,7 @@ module.exports = {
 
   },
   google_Maps: {
-
+    key: 'AIzaSyDBa3vvMrnqZ50iY18bZ396OoTw3kmjJoU',
   },
   uber: {
 
