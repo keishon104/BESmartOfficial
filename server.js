@@ -1,9 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const keys = require('./server/config/keys.js');
-var twilio = require('twilio');
-
-
+//const keys = require('./server/config/keys.js');
+const flights = require('.server/data/flights.js');
 
 
 // Configures Express server.
@@ -30,19 +28,3 @@ app.get('/checkin', (req, res) => res.sendFile(__dirname+'/client/checkin.html')
 
 //connect backend to payment
 app.get('/navigate', (req, res) => res.sendFile(__dirname+'/client/navigate.html'));
-
-const accountSid = keys.twilio.accountSid;
-const authToken = keys.twilio.authToken;
-const client = require('twilio')(accountSid, authToken);
-
-app.get('/message', (req,res) => {
-  client.messages
-    .create({
-       body: 'Hey, you need to go to the airport!',
-       from: '+18508054624',
-       to: '+13865069094'
-     })
-    .then(message => console.log(message.sid))
-    .done();
-
-});
