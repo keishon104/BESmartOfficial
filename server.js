@@ -28,10 +28,13 @@ app.listen(Port, () => {
 app.get('/', (req, res) => res.sendFile(__dirname+'/client/index.html'));
 
 // connect backend to checkin page
-app.get('/checkin', (req, res) => res.sendFile(__dirname+'/client/checkin.html'));
+app.get('/navigate', (req, res) => res.sendFile(__dirname+'/client/checkin.html'));
 
 //connect backend to payment
-app.get('/navigate', (req, res) => res.sendFile(__dirname+'/client/navigate.html'));
+app.get('/travel', (req, res) => res.sendFile(__dirname+'/client/travel.html'));
+
+
+app.get('/payment', (req,res) => res.sendFile(__dirname + '/client/payment.html'));
 
 const accountSid = keys.twilio.accountSid;
 const authToken = keys.twilio.authToken;
@@ -47,4 +50,23 @@ app.get('/message', (req,res) => {
     .then(message => console.log(message.sid))
     .done();
 
+});
+
+
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+var stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+app.post( '/pay', (req,res) => {
+
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+const token = req.body.stripeToken; // Using Express
+
+const charge = stripe.charges.create({
+  amount: 3000,
+  currency: 'usd',
+  description: 'Luggage Checkin',
+  source: token,
+});
+res.sendFile(__dirname + '/client/index.html');
 });
