@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 //const keys = require('./server/config/keys.js');
 const flights = require('.server/data/flights.js');
 
+//bri should have the twilio stuff
+
+
 
 // Configures Express server.
 const app = express();
