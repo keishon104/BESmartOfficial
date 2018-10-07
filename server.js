@@ -3,8 +3,7 @@ const bodyParser = require('body-parser');
 const keys = require('./server/config/keys.js');
 var twilio = require('twilio');
 const flights = require('./server/data/flights.js');
-
-//bri should have the twilio stuff
+var request = require("request");
 
 
 
@@ -33,7 +32,7 @@ app.get('/navigate', (req, res) => res.sendFile(__dirname+'/client/checkin.html'
 //connect backend to payment
 app.get('/travel', (req, res) => res.sendFile(__dirname+'/client/travel.html'));
 
-
+// Route for Payment page
 app.get('/payment', (req,res) => res.sendFile(__dirname + '/client/payment.html'));
 
 const accountSid = keys.twilio.accountSid;
@@ -43,7 +42,7 @@ const client = require('twilio')(accountSid, authToken);
 app.get('/message', (req,res) => {
   client.messages
     .create({
-       body: 'Hey, you need to go to the airport!',
+       body: 'Hey, you need to leave now to make your flight.',
        from: '+18508054624',
        to: '+13865069094'
      })
@@ -51,6 +50,13 @@ app.get('/message', (req,res) => {
     .done();
 
 });
+
+
+
+
+// request("http://www.sitepoint.com", function(error, response, body) {
+//   console.log(body);
+// });
 
 
 // Set your secret key: remember to change this to your live secret key in production
