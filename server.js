@@ -4,7 +4,6 @@ const keys = require('./server/config/keys.js');
 var twilio = require('twilio');
 const flights = require('./server/data/flights.js');
 var request = require("request");
-const port = process.env.PORT || 3000; //making port
 
 
 // Configures Express server.
@@ -16,6 +15,7 @@ app.use(express.static(__dirname + '/client'));
 
 // Creates variable for port configutation
 
+const Port = process.env.PORT || 3000; //making port
 
 
 app.listen(Port, () => {
