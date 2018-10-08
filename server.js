@@ -9,7 +9,7 @@ var request = require("request");
 
 // Configures Express server.
 const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // Allows for html to be properly rendered
 app.use(express.static(__dirname + '/client'));
@@ -89,15 +89,16 @@ res.sendFile(__dirname + '/client/index.html');
 
 // Detects faces and returns demographics
 app.get( '/enroll', (req,res) => {
+  console.log(req.body);
 request({
   method: 'POST',
-  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/enroll',
+  url: 'https://api.kairos.com/enroll',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '4985f625',
-    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+    'app_id': '9f67e412',
+    'app_key': '17658df9d73678a3c78363310ae01fb6'
   },
-  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth2.jpg\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
+  body: "{  \"image\": \"https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/03/27/09/meghan-markle-27.03.18.jpg?w968\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
 }, function (error, response, body) {
   console.log('Status:', response.statusCode);
   console.log('Headers:', JSON.stringify(response.headers));
@@ -109,17 +110,20 @@ request({
 app.get('/verify', (req,res) => {
   request({
   method: 'POST',
-  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/verify',
+  url: 'https://api.kairos.com/verify',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '4985f625',
-    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+    'app_id': '9f67e412',
+    'app_key': '17658df9d73678a3c78363310ae01fb6'
   },
-  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth2.jpg\",  \"gallery_name\": \"MyGallery\",  \"subject_id\": \"Elizabeth\"}"
+  body: "{  \"image\": \"https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/03/27/09/meghan-markle-27.03.18.jpg?w968\",  \"gallery_name\": \"MyGallery\",  \"subject_id\": \"Elizabeth\"}"
 }, function (error, response, body) {
   console.log('Status:', response.statusCode);
   console.log('Headers:', JSON.stringify(response.headers));
   console.log('Response:', body);
+  console.log(body.confidence);
+  res.sendFile(__dirname + '/client/approvedFace.html');
+
   });
 });
 
