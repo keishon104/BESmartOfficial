@@ -4,6 +4,7 @@ const keys = require('./server/config/keys.js');
 var twilio = require('twilio');
 const flights = require('./server/data/flights.js');
 var request = require("request");
+// require('./server/config/kairos.js');
 
 
 // Configures Express server.
@@ -14,7 +15,6 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client'));
 
 // Creates variable for port configutation
-
 const Port = process.env.PORT || 3000; //making port
 
 
@@ -34,6 +34,11 @@ app.get('/travel', (req, res) => res.sendFile(__dirname+'/client/travel.html'));
 // Route for Payment page
 app.get('/payment', (req,res) => res.sendFile(__dirname + '/client/payment.html'));
 
+// Route for TSA Checkin/ Faial Recognition
+app.get('/tsa', (req,res) => res.sendFile(__dirname + '/client/tsaCheckin.html'));
+
+
+// The code belows pertains to the Twilio API
 const accountSid = keys.twilio.accountSid;
 const authToken = keys.twilio.authToken;
 const client = require('twilio')(accountSid, authToken);
@@ -74,4 +79,99 @@ const charge = stripe.charges.create({
   source: token,
 });
 res.sendFile(__dirname + '/client/index.html');
+});
+
+
+
+
+
+// The Code below contains information related to Kairos Facial recognitiion and Blockchain
+
+// Detects faces and returns demographics
+app.get( '/enroll', (req,res) => {
+request({
+  method: 'POST',
+  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/enroll',
+  headers: {
+    'Content-Type': 'application/json',
+    'app_id': '4985f625',
+    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+  },
+  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth2.jpg\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+  });
+});
+
+// Takes face and compares it to images in gallery
+app.get('/verify', (req,res) => {
+  request({
+  method: 'POST',
+  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/verify',
+  headers: {
+    'Content-Type': 'application/json',
+    'app_id': '4985f625',
+    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+  },
+  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth2.jpg\",  \"gallery_name\": \"MyGallery\",  \"subject_id\": \"Elizabeth\"}"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+  });
+});
+
+
+// Takes faces and matches them to faces in gallery
+app.get('/recognize', (req,res) => {
+  request({
+  method: 'POST',
+  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/recognize',
+  headers: {
+    'Content-Type': 'application/json',
+    'app_id': '4985f625',
+    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+  },
+  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth.jpg\",  \"gallery_name\": \"MyGallery\"}"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+  });
+});
+
+// Takes photos and returns facial features
+app.get('/detect', (req,res) => {
+  request({
+  method: 'POST',
+  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/enroll',
+  headers: {
+    'Content-Type': 'application/json',
+    'app_id': '4985f625',
+    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+  },
+  body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth.jpg\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+  });
+});
+
+
+// Lists all galleries I've created
+app.get('/gallery/list_all', (req, res) => {
+  request({
+  method: 'POST',
+  url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/gallery/list_all',
+  headers: {
+    'app_id': '4985f625',
+    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+  }}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+});
 });
