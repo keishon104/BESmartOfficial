@@ -2735,6 +2735,7 @@ input, select, textarea {
 			body, input, textarea, select {
 				font-size: 12.5pt;
 				line-height: 1.5em;
+				height: 100vh;
 			}
 
 			h2 {
@@ -2851,6 +2852,7 @@ input, select, textarea {
 				-ms-transition: -ms-transform 0.5s ease;
 				transition: transform 0.5s ease;
 				padding-bottom: 1px;
+				height: 100vh
 			}
 
 			#navButton {
@@ -3048,7 +3050,7 @@ input, select, textarea {
 			body.homepage #header {
 				min-height: 0;
 				padding: 5.5em 0 5em 0;
-				height: auto;
+				height: 100%;
 			}
 
 				body.homepage #header:before {

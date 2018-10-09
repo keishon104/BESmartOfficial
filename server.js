@@ -38,6 +38,10 @@ app.get('/payment', (req,res) => res.sendFile(__dirname + '/client/payment.html'
 app.get('/tsa', (req,res) => res.sendFile(__dirname + '/client/tsaCheckin.html'));
 
 
+// API.ai Chatbot integration.
+app.get('/chatbot', (req, res) => res.sendFile(__dirname + '/client/chatbot.html'))
+
+
 // The code belows pertains to the Twilio API
 const accountSid = keys.twilio.accountSid;
 const authToken = keys.twilio.authToken;
@@ -55,6 +59,20 @@ app.get('/message', (req,res) => {
 
 });
 
+
+
+// TSA Wait time
+// request({
+// method: 'POST',
+// url: 'https://apps.tsa.dhs.gov/MyTSAWebService/GetConfirmedWaitTimes.ashx?ap=MCO&output=json',
+// }, function (error, response, body) {
+// console.log('Status:', response.body);
+// JSON.stringify(response.headers);
+//
+// });
+
+// https://apps.tsa.dhs.gov/MyTSAWebService/GetConfirmedWaitTimes.ashx?ap=RDU&output=json
+// https://apps.tsa.dhs.gov/MyTSAWebService/GetConfirmedWaitTimes.ashx?ap=DCA
 
 
 
