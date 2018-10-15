@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/keishon104/BESmartOfficial/issues"
   },
-  "homepage": "https://github.com/keishon104/BESmartOfficial#readme"
+  "homepage": "https://github.com/keishon104/BESmartOfficial#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "stripe": "^6.12.1",
+    "twilio": "^3.22.0"
+  }
 }

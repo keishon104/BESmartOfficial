@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Pay for Luggage</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner Apple Link: https://itunes.apple.com/us/app/measure/id1383426740?mt=8 -->
+						<div class="inner">
+							<header>
+								 <h1><a href="" id="logo">Pay for Luggage</a></h1>
+							 </br>
+
+							</header>
+								<form action="/pay" method="POST">
+									<script
+										src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+										data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+										data-amount="3000"
+										data-name="Check"
+										data-description="Luggage Payment"
+										data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+										data-locale="auto"
+										data-zip-code="true">
+									</script>
+								</form>
+							</div>
+				</div>
+
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<!-- Opening Google Measure App -->
+
+			<script>
+				 // window.onload = function() {
+				 <!-- Deep link URL for existing users with app already installed on their device -->
+						 // window.location = 'yourapp://app.com/?screen=xxxxx';
+				 <!-- Download URL (TUNE link) for new users to download the app -->
+						 // setTimeout("window.location = 'http://hastrk.com/serve?action=click&publisher_id=1&site_id=2';", 1000);
+				 // }
+			 </script>
+
+	</body>
+</html>
