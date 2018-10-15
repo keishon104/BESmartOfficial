@@ -83,7 +83,7 @@ app.get('/message', (req,res) => {
 
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-var stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+var stripe = require("stripe")("sk_test_");
 app.post( '/pay', (req,res) => {
 
 // Token is created using Checkout or Elements!
@@ -113,8 +113,8 @@ request({
   url: 'https://api.kairos.com/enroll',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '9f67e412',
-    'app_key': '17658df9d73678a3c78363310ae01fb6'
+    'app_id': keys.kairos.app_id,
+    'app_key': keys.kairos.app_key
   },
   body: "{  \"image\": \"https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/03/27/09/meghan-markle-27.03.18.jpg?w968\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
 }, function (error, response, body) {
@@ -131,8 +131,8 @@ app.get('/verify', (req,res) => {
   url: 'https://api.kairos.com/verify',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '9f67e412',
-    'app_key': '17658df9d73678a3c78363310ae01fb6'
+    'app_id': keys.kairos.app_id,
+    'app_key': keys.kairos.app_key
   },
   body: "{  \"image\": \"https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/03/27/09/meghan-markle-27.03.18.jpg?w968\",  \"gallery_name\": \"MyGallery\",  \"subject_id\": \"Elizabeth\"}"
 }, function (error, response, body) {
@@ -153,8 +153,8 @@ app.get('/recognize', (req,res) => {
   url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/recognize',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '4985f625',
-    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+    'app_id': keys.kairos.app_id,
+    'app_key': keys.kairos.app_key
   },
   body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth.jpg\",  \"gallery_name\": \"MyGallery\"}"
 }, function (error, response, body) {
@@ -171,8 +171,8 @@ app.get('/detect', (req,res) => {
   url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/enroll',
   headers: {
     'Content-Type': 'application/json',
-    'app_id': '4985f625',
-    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+    'app_id': keys.kairos.app_id,
+    'app_key': keys.kairos.app_key
   },
   body: "{  \"image\": \"http://media.kairos.com/kairos-elizabeth.jpg\",  \"subject_id\": \"Elizabeth\",  \"gallery_name\": \"MyGallery\"}"
 }, function (error, response, body) {
@@ -189,8 +189,8 @@ app.get('/gallery/list_all', (req, res) => {
   method: 'POST',
   url: 'https://private-anon-44c1b5179f-kairos.apiary-mock.com/gallery/list_all',
   headers: {
-    'app_id': '4985f625',
-    'app_key': 'aa9e5d2ec3b00306b2d9588c3a25d68e'
+    'app_id': keys.kairos.app_id,
+    'app_key': keys.kairos.app_key
   }}, function (error, response, body) {
   console.log('Status:', response.statusCode);
   console.log('Headers:', JSON.stringify(response.headers));
