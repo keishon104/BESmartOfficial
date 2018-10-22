@@ -1,6 +1,6 @@
 # BE Smart Hackathon 2018
 
-During the Black Enterprise BE Smart Hackathon the Florida A&M University team made a application to solve current problems that American Airlines experienced. Those problem areas included: before traveling to the airport, traveling to the airport, and traveling from one flight to another. Our application gives users the ability to use AR to scan size of travel luggage, pay for luggage inside the app, view directions to the American Airlines Terminal, Request a Uber to the Terminal, converse with a chatbot, and use Facial Recognition to speed up the TSA process. In addition we planned of notifying the user when to leave their current location based on their distance from the airport and when their flight is scheduled to leave.
+During the [Black Enterprise BE Smart Hackathon](https://www.blackenterprise.com/besmart/) the Florida A&M University team made a application to solve current problems that American Airlines experienced. Those problem areas included: before traveling to the airport, traveling to the airport, and traveling from one flight to another. Our application gives users the ability to use AR to scan size of travel luggage, pay for luggage inside the app, view directions to the American Airlines Terminal, Request a Uber to the Terminal, converse with a chatbot, and use Facial Recognition to speed up the TSA process. In addition we planned of notifying the user when to leave their current location based on their distance from the airport and when their flight is scheduled to leave.
 
 
 ## Getting Started
@@ -23,21 +23,27 @@ Twilio API Keys.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+To install the project and have it begin to run, do the following.
 
-Say what the step will be
 
+1. Clone Repo locally
 ```
-1. Clone the repository to your local computer.
-2. Use npm install to download any packages needed for development
+$ git-clone https://github.com/keishon104/BESmartOfficial.git
+```
+2. install dependencies
+```
+$ npm install
+```
+
 3. Input the correct credentials to use the necessary APIs.
-4. Run the program using :"node start" or and any other related command.
-```
-
-And repeat
+4. Run the program using
 
 ```
-until finished
+$ node server.js
+
+or
+
+$ nodemon server.js
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -46,61 +52,54 @@ End with an example of getting some data out of the system or using it for a lit
 
 There is currently no way to run tests on our code.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-we used
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+This code is currently deployed on the following links:
+* **Version 1** - [Heroku](https://be-smart-hackathon.herokuapp.com)   
+* **Version 2** - [Heroku](https://be-smart-ai.herokuapp.com)   
 
-## Built With
+
+## API's Used
 
 * [NodeJS](https://nodejs.org/en/) - a JavaScript runtime
 * [ExpressJS](https://expressjs.com/) - a minimal and flexible Node.js web application framework.
 * [Twilio](https://www.twilio.com/) - API used to send SMS to users.
 * [API.AI](https://www.twilio.com/) - API used to train a chatbot that can understand language and respond to users.
-* [Kairos Facial Recognition](https://www.twilio.com/) - API used to detect and recognize faces using Machine Learning.
+* [Kairos Facial Recognition](https://www.kairos.com/) - API used to detect and recognize faces using Machine Learning.
+* [DHS TSA API](https://www.dhs.gov/mytsa-api-documentation) - Returns the TSA wait time for airports.  
 
 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please contact us if you want to contribute towards this project.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/keishon104/BESmartOfficial/tags).
 
 ## Authors
 
-* **Brianna Bowen** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Brianna Bowen** - *Initial work* - [GitHub](https://github.com/bbowen22)
 
-* **Daroush** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Daroush Renoit** - *Initial work* - [GitHub](https://github.com/dpeace8)
 
-* **Kiana** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Kiana Blaine** - *Initial work* - [GitHub](https://github.com/k12blaine)
 
 * **Keishon Smith** - *Initial work* - [GitHub](https://github.com/keishon104)
 
 
 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/keishon104/BESmartOfficial/graphs/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
+
+Our team would like to thank the Black Enterprise for the opportunity to showcase our skills and network with fellow black entrepreneurs at the 2018 Black Enterprise Summit in San Francisco, California.
+
+Made with :green_heart: by :snake:
